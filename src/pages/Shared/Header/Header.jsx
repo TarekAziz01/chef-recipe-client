@@ -14,11 +14,26 @@ const Header = () => {
               <Link to="/" className="text-black text-decoration-none me-3">
                 Home
               </Link>
-              <Link to="/" className="text-black text-decoration-none me-3">
+              <Link to="/blog" className="text-black text-decoration-none me-3">
                 Blog
               </Link>
-              <Link to="/" className="text-black text-decoration-none me-3">
+              <Link
+                to="/favorite-recipe"
+                className="text-black text-decoration-none me-3"
+              >
                 Favorite Recipe
+              </Link>
+              <Link
+                to="/login"
+                className="text-black text-decoration-none me-3"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="text-black text-decoration-none me-3"
+              >
+                Register
               </Link>
             </Nav>
             <Nav className="">
