@@ -1,9 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../provider/AuthProvider';
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
+
+  const {user} = useContext(AuthContext)
     return (
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
@@ -18,7 +22,7 @@ const Header = () => {
                 Blog
               </Link>
               <Link
-                to="/favorite-recipe"
+                to="/favorite"
                 className="text-black text-decoration-none me-3"
               >
                 Favorite Recipe
@@ -37,10 +41,17 @@ const Header = () => {
               </Link>
             </Nav>
             <Nav className="">
-              <Nav.Link href="#deets">profile</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                <Button variant="secondary">Login</Button>
-              </Nav.Link>
+
+              {user && <FaUserCircle className="fs-2 me-2"></FaUserCircle>}
+
+              {user ? (
+                <Button variant="secondary">Logout</Button>
+              ) : (
+                <Link to="/login">
+                  <Button variant="secondary">Login</Button>
+                </Link>
+              )}
+              
             </Nav>
           </Navbar.Collapse>
         </Container>
