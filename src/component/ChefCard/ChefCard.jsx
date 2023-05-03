@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
+import { Button, Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ChefCard = (props) => {

@@ -23,7 +23,6 @@ const Chef = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    // console.log(chefs);
 
     if(loading){
         return <Spinner animation="border" variant="primary" />;
