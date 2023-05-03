@@ -6,6 +6,7 @@ import Login from "../pages/Login/Login";
 import Layout from "../layouts/Layout";
 import Favorite from "../pages/Favorite/Favorite";
 import Blog from "../pages/Blog/Blog";
+import ChefDetail from "../pages/ChefDetail/ChefDetail";
 
 const router = createBrowserRouter([
   {
@@ -30,14 +31,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/favorite",
-        element:<Favorite></Favorite>
+        element: <Favorite></Favorite>,
       },
       {
         path: "/blog",
-          element: <Blog></Blog>
+        element: <Blog></Blog>,
+      },
+      {
+        path: "/chef/:id",
+        element: <ChefDetail></ChefDetail>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/chef/${params.id}`),
       },
     ],
-  }
+  },
 ]);
 
 export default router;
