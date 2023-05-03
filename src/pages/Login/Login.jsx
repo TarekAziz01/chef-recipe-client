@@ -1,20 +1,36 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GoogleAuthProvider } from "firebase/auth";
 
 
 const Login = () => {
+  const [show, setShow] = useState(false);
 
-  const { signIn } = useContext(AuthContext)
+  const {googleSignin, signIn } = useContext(AuthContext);
+
+  // const provider = new GoogleAuthProvider();
   
   const handleTost = () => {
     toast("Login Success😎😎");
   };
+
+  const handleGoogleSignin = () => {
+    googleSignin()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        handleTost();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -26,6 +42,7 @@ const Login = () => {
       signIn(email,password)
         .then(result => {
           const loggedUser = result.user;
+          console.log(loggedUser);
           console.log(loggedUser);
           form.reset();
           handleTost();
@@ -41,14 +58,31 @@ const Login = () => {
         <h5 className="mb-4">Please Login !!!</h5>
         <Form onSubmit={handleLogin}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control type="email" name="email" placeholder="Enter email" />
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              required
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
             <Form.Control
-              type="password"
+              type={show ? "text" : "password" }
               name="password"
               placeholder="Password"
+              required
             />
+            <p onClick={() => setShow(!show)}>
+              <small>
+                {show ? (
+                  <span>Hide Password</span>
+                ) : (
+                  <span> Show Password</span>
+                )}
+              </small>
+            </p>
           </Form.Group>
           <p>
             <small>
@@ -62,7 +96,11 @@ const Login = () => {
         <div className="border-bottom border-3 my-3"></div>
 
         <div className="d-grid gap-2">
-          <button type="button" className="btn btn-outline-secondary">
+          <button
+            onClick={handleGoogleSignin}
+            type="button"
+            className="btn btn-outline-secondary"
+          >
             Continue with Google
           </button>
           <button type="button" className="btn btn-outline-secondary">

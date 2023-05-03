@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
+  const [show, setShow] = useState(false);
 
   const { user, createUser } = useContext(AuthContext);
   // console.log(createUser)
@@ -45,22 +46,41 @@ const Register = () => {
         <h5 className="mb-4">Please Register !!!</h5>
         <Form onSubmit={handleRegister}>
           <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Label>Your Name</Form.Label>
             <Form.Control type="name" name="name" placeholder="Your name" />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control type="email" name="email" placeholder="Enter email" />
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Email address</Form.Label>
             <Form.Control
-              type="password"
-              name="password"
-              placeholder="Password"
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              required
             />
           </Form.Group>
 
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type={show ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              required
+            />
+            <p onClick={() => setShow(!show)}>
+              <small>
+                {show ? (
+                  <span>Hide Password</span>
+                ) : (
+                  <span> Show Password</span>
+                )}
+              </small>
+            </p>
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicUrl">
+            <Form.Label>Photo Url</Form.Label>
             <Form.Control type="link" name="url" placeholder="Photo url" />
           </Form.Group>
 
