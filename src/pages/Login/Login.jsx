@@ -1,11 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 
 const Login = () => {
+
+  const{signIn} = useContext(AuthContext)
 
     const handleLogin = (event) => {
       event.preventDefault();
@@ -13,6 +16,17 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+        
+        signIn(email,password)
+          .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            form.reset();
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      
     };
 
     return (
@@ -31,23 +45,22 @@ const Login = () => {
           </Form.Group>
           <p>
             <small>
-              {" "}
-              New here?<Link to="/register">Register please</Link>{" "}
+              New here?<Link to="/register">Register please</Link>
             </small>
           </p>
-          <Button size="lg" variant="primary" type="submit">
-            Submit
+          <Button variant="primary" type="submit">
+            Login
           </Button>
         </Form>
         <div className="border-bottom border-3 my-3"></div>
 
         <div className="d-grid gap-2">
-          <Button variant="secondary" size="lg">
+          <button type="button" className="btn btn-outline-secondary">
             Continue with Google
-          </Button>
-          <Button variant="secondary" size="lg">
+          </button>
+          <button type="button" className="btn btn-outline-secondary">
             Continue with Github
-          </Button>
+          </button>
         </div>
       </div>
     );

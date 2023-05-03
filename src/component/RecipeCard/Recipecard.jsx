@@ -8,8 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 const Recipecard = (props) => {
-    const { id, name, ingredients, method, rating,photo } = props.recipe;
-    console.log(props);
+    const {name, ingredients, method, rating,photo } = props.recipe;
 
     const handleTost = () => {
       toast("🙌Added to Favourit🙌");

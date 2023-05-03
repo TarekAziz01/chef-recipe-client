@@ -7,7 +7,16 @@ import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
 
-  const {user} = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user)
+
+  const handleLogout = () => {
+    logOut()
+      .then(result => { })
+      .catch(error => console.log(error))
+    
+  }
+
     return (
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
@@ -41,17 +50,18 @@ const Header = () => {
               </Link>
             </Nav>
             <Nav className="">
-
               {user && <FaUserCircle className="fs-2 me-2"></FaUserCircle>}
+              {user && <span>{user.email}</span>}
 
               {user ? (
-                <Button variant="secondary">Logout</Button>
+                <Button onClick={handleLogout} variant="secondary">
+                  Logout
+                </Button>
               ) : (
                 <Link to="/login">
                   <Button variant="secondary">Login</Button>
                 </Link>
               )}
-              
             </Nav>
           </Navbar.Collapse>
         </Container>
