@@ -11,21 +11,26 @@ const ChefDetail = () => {
     const { id } = useParams();
     return (
       <div className="mt-5">
-        <img src={photo} alt="" />
-        <h4 className="d-flex justify-content-center mb-5">{name}</h4>
-        <p className="d-flex justify-content-center ">{description}</p>
-        <div className="d-flex gap-5">
-          <p>Experiance {experience}</p>
-          <p>likes {likes}</p>
-          <p>Number of Recipe {numRecipes}</p>
+        <div className="d-flex gap-5 mb-4">
+          <img src={photo} alt="" />
+          <div>
+            <h4 className="d-flex justify-content-center mb-5">{name}</h4>
+            <p className="d-flex justify-content-center ">{description}</p>
+          </div>
+        </div>
+
+        <div className="d-flex gap-5 border border-light">
+          <p>Experiance: {experience}</p>
+          <p>likes: {likes}</p>
+          <p>Number of Recipe: {numRecipes}</p>
         </div>
         <div>
-            <h4 className='my-4'>Some Special recipes </h4>
-            <Row xs={1} md={2} lg={3} className="g-4">
+          <h4 className="my-4">Some Special recipes </h4>
+          <Row xs={1} md={2} lg={3} className="g-4">
             {recipes.map((recipe) => (
-                <Recipecard key={recipe.id} recipe={recipe}></Recipecard>
+              <Recipecard key={recipe.id} recipe={recipe}></Recipecard>
             ))}
-            </Row>
+          </Row>
         </div>
       </div>
     );

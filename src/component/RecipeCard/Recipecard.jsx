@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 const Recipecard = (props) => {
-    const { id, name, ingredients, method, rating } = props.recipe;
+    const { id, name, ingredients, method, rating,photo } = props.recipe;
     console.log(props);
 
     const handleTost = () => {
@@ -23,28 +23,26 @@ const Recipecard = (props) => {
           </Card.Header>
           <Card.Body>
             <div className="d-flex">
-              <Card.Img src="holder.js/100px270" alt="Card image" />
-              <div className="list-group-flush">
-                <Card.Text>Ingredients</Card.Text>
-                {ingredients.map((ingre) => (
-                  <ListGroup.Item key={ingre}>{ingre}</ListGroup.Item>
-                ))}
-              </div>
+              <Card.Img src={photo} alt="Card image" />
+              <div className="list-group-flush"></div>
             </div>
             <Card.Text>{rating}</Card.Text>
+            <div className='mb-4'>
+              <Card.Text>Ingredients</Card.Text>
+              {ingredients.map((ingre) => (
+                <ListGroup.Item key={ingre}>{ingre}</ListGroup.Item>
+              ))}
+            </div>
             <Card.Text class="border-bottom">Process Method</Card.Text>
             <Card.Text>{method}</Card.Text>
-            {/* {method.map((ingre) => (
-              <ListGroup.Item key={ingre}>{ingre}</ListGroup.Item>
-            ))} */}
             <Card.Text>
               Some quick example text to build on the card title and make up the
               bulk of the card is content.
             </Card.Text>
-            <div className="mt-auto w-100">
+            <div className="mt-auto ">
               <Button
                 onClick={handleTost}
-                className="align-self-end"
+                className="d-flex align-items-end"
                 variant="outline-primary"
                 size="lg"
               >
