@@ -20,7 +20,7 @@ const ChefDetail = () => {
           <p>Number of Recipe {numRecipes}</p>
         </div>
         <div>
-            <h5>Some Special recipes </h5>
+            <h4 className='my-4'>Some Special recipes </h4>
             <Row xs={1} md={2} lg={3} className="g-4">
             {recipes.map((recipe) => (
                 <Recipecard key={recipe.id} recipe={recipe}></Recipecard>
