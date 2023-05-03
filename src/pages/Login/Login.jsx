@@ -39,7 +39,6 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
       });
-    console.log("dddddddddddddddddddddddddddddddddddddd")
   }
 
   const handleLogin = (event) => {

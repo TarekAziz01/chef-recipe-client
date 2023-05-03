@@ -9,9 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
-  // console.log(user.displayName);
-  // console.log(user.photoURL);
 
   const handleTost = () => {
     toast("LogOut Success.tata byby🥲🥲");
@@ -55,10 +52,14 @@ const Header = () => {
             </Link>
           </Nav>
           <Nav className="">
-            {user && <FaUserCircle className="fs-2 me-2"></FaUserCircle>}
-            {user && <span>{user?.email}</span>}
-            {user && <span>{user?.displayName}</span>}
-            {user && <img src={user?.photoURL} />}
+            {/* {user && <span>{user?.displayName}</span>} */}
+            {user && (
+              <img
+                className="rounded-circle"
+                style={{ width: "2rem" }}
+                src={user?.photoURL}
+              />
+            )}
 
             {user ? (
               <Button onClick={handleLogout} variant="secondary">
