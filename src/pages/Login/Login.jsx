@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,8 +10,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
-  const {googleSignin,githubSignin, signIn } = useContext(AuthContext);
+  const location = useLocation();
+  // console.log(location);
+  const from = location.state?.from?.pathname || "/";
+
+  const { googleSignin, githubSignin, signIn, user } = useContext(AuthContext);
+  console.log(user)
   
   const handleTost = () => {
     toast("Login Success😎😎");
@@ -22,6 +28,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from, { replace: true });
         handleTost();
       })
       .catch((error) => {
@@ -34,6 +41,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        navigate(from, { replace: true });
         handleTost();
       })
       .catch((error) => {
@@ -46,14 +54,12 @@ const Login = () => {
       const form = event.target;
       const email = form.email.value;
       const password = form.password.value;
-      console.log(email, password);
       
       signIn(email,password)
         .then(result => {
           const loggedUser = result.user;
-          console.log(loggedUser);
-          console.log(loggedUser);
           form.reset();
+          navigate(from, {replace: true});
           handleTost();
         })
         .catch(error => {

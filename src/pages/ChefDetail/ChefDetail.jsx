@@ -8,8 +8,8 @@ const ChefDetail = () => {
   const chefDetail = useLoaderData();
   const { name, likes, description, experience, photo, numRecipes, recipes } =
     chefDetail;
-  console.log(chefDetail);
-  const { id } = useParams();
+  // console.log(chefDetail);
+  // const { id } = useParams();
   return (
     <div className="mt-5">
       <div className="d-flex gap-5 mb-4">

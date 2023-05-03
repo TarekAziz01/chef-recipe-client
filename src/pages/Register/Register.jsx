@@ -26,12 +26,10 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photoUrl = form.url.value;
-        console.log(name, email,password, photoUrl);
         
         createUser(email,password)
           .then(result => {
             const loggedUser = result.user;
-            // console.log(loggedUser);
             form.reset();
             handleTost();
           })

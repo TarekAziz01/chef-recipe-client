@@ -51,7 +51,7 @@ const Header = () => {
               Register
             </Link>
           </Nav>
-          <Nav className="">
+          <Nav className="gap-3">
             {/* {user && <span>{user?.displayName}</span>} */}
             {user && (
               <img
