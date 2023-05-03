@@ -41,15 +41,6 @@ const Header = () => {
             >
               Favorite Recipe
             </Link>
-            <Link to="/login" className="text-black text-decoration-none me-3">
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="text-black text-decoration-none me-3"
-            >
-              Register
-            </Link>
           </Nav>
           <Nav className="gap-3">
             {/* {user && <span>{user?.displayName}</span>} */}

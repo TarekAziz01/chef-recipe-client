@@ -12,6 +12,7 @@ const ChefDetail = () => {
   // const { id } = useParams();
   return (
     <div className="mt-5">
+      <h2 className="text-center mb-5">Chef Recipes</h2>
       <div className="d-flex gap-5 mb-4">
         <img src={photo} alt="" />
         <div>

@@ -6,8 +6,6 @@ import { Button, Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ChefCard = (props) => {
-    console.log(props);
-    console.log(props.chef.name)
     const { name, id, likes, description, experience, photo, numRecipes, recipes } = props.chef;
     return (
       <Card style={{ width: "18rem" }} className="m-2">
