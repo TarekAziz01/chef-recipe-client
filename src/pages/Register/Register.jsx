@@ -5,11 +5,18 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
 
   const { user, createUser } = useContext(AuthContext);
   // console.log(createUser)
+
+
+   const handleTost = () => {
+      toast("Registration Success.Welcome to Haveli😉😉");
+    };
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -23,8 +30,9 @@ const Register = () => {
         createUser(email,password)
           .then(result => {
             const loggedUser = result.user;
-            console.log(loggedUser);
+            // console.log(loggedUser);
             form.reset();
+            handleTost();
           })
           .catch(error => {
             console.log(error)
@@ -68,6 +76,18 @@ const Register = () => {
             Register
           </Button>
         </Form>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     );
 };

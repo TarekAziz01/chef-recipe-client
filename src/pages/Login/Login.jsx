@@ -4,30 +4,37 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const Login = () => {
 
-  const{signIn} = useContext(AuthContext)
+  const { signIn } = useContext(AuthContext)
+  
+  const handleTost = () => {
+    toast("Login Success😎😎");
+  };
 
-    const handleLogin = (event) => {
-      event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-        
-        signIn(email,password)
-          .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            form.reset();
-          })
-          .catch(error => {
-            console.log(error)
-          })
+  const handleLogin = (event) => {
+    event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
+      console.log(email, password);
       
-    };
+      signIn(email,password)
+        .then(result => {
+          const loggedUser = result.user;
+          console.log(loggedUser);
+          form.reset();
+          handleTost();
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    
+  };
 
     return (
       <div className="w-25 mx-auto mt-5 d-grid gap-2">
@@ -62,6 +69,18 @@ const Login = () => {
             Continue with Github
           </button>
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     );
 };

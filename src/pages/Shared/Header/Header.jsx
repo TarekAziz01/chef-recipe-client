@@ -4,15 +4,23 @@ import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 import { FaUserCircle } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
 
   const { user, logOut } = useContext(AuthContext);
-  console.log(user)
+  // console.log(user)
+
+   const handleTost = () => {
+     toast("LogOut Success.tata byby🥲🥲");
+   };
 
   const handleLogout = () => {
     logOut()
-      .then(result => { })
+      .then(result => {
+        handleTost();
+       })
       .catch(error => console.log(error))
     
   }
@@ -65,6 +73,18 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </Navbar>
     );
 };
