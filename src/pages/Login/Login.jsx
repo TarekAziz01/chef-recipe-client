@@ -6,15 +6,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { GoogleAuthProvider } from "firebase/auth";
 
 
 const Login = () => {
   const [show, setShow] = useState(false);
 
-  const {googleSignin, signIn } = useContext(AuthContext);
-
-  // const provider = new GoogleAuthProvider();
+  const {googleSignin,githubSignin, signIn } = useContext(AuthContext);
   
   const handleTost = () => {
     toast("Login Success😎😎");
@@ -30,6 +27,19 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleGithubSignin = () => {
+    githubSignin()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        handleTost();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log("dddddddddddddddddddddddddddddddddddddd")
   }
 
   const handleLogin = (event) => {
@@ -69,7 +79,7 @@ const Login = () => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              type={show ? "text" : "password" }
+              type={show ? "text" : "password"}
               name="password"
               placeholder="Password"
               required
@@ -103,7 +113,11 @@ const Login = () => {
           >
             Continue with Google
           </button>
-          <button type="button" className="btn btn-outline-secondary">
+          <button
+            onClick={handleGithubSignin}
+            type="button"
+            className="btn btn-outline-secondary"
+          >
             Continue with Github
           </button>
         </div>
