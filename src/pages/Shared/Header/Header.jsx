@@ -46,7 +46,7 @@ const Header = () => {
             {/* {user && <span>{user?.displayName}</span>} */}
             {user && (
               <img
-                title={`${user?.displayName}`}
+                title={user?.displayName}
                 className="rounded-circle"
                 style={{ width: "2rem" }}
                 src={user?.photoURL}
