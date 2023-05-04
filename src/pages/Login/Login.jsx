@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 const Login = () => {
+  const [errorLogin, setErrorLogin] = useState('')
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
@@ -31,7 +32,7 @@ const Login = () => {
         handleTost();
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
       });
   };
 
@@ -58,18 +59,21 @@ const Login = () => {
         .then(result => {
           const loggedUser = result.user;
           form.reset();
-          navigate(from, {replace: true});
+          navigate(from, { replace: true });
+          setErrorLogin('');
           handleTost();
         })
         .catch(error => {
-          console.log(error)
+          console.log(error);
+          setErrorLogin(error.message);
         })
     
   };
 
     return (
       <div className="w-25 mx-auto mt-5 d-grid gap-2">
-        <h5 className="mb-4">Please Login !!!</h5>
+        <h5 className="mb-4">Please Login</h5>
+        {errorLogin && <small className="text-warning">{errorLogin}</small>}
         <Form onSubmit={handleLogin}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>

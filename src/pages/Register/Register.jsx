@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
+  const [regError, setRegError] = useState('');
   const [show, setShow] = useState(false);
 
   const { user, createUser } = useContext(AuthContext);
@@ -29,19 +30,24 @@ const Register = () => {
         
         createUser(email,password)
           .then(result => {
+            result.displaName = name;
+            result.photoURL = photoUrl;
             const loggedUser = result.user;
             form.reset();
+            setRegError('');
             handleTost();
           })
           .catch(error => {
-            console.log(error)
+            console.log(error.message)
+            setRegError(error.message)
           })
 
     }
 
     return (
       <div className="w-25 mx-auto mt-5">
-        <h5 className="mb-4">Please Register !!!</h5>
+        <h5 className="mb-4">Please Register</h5>
+        {regError && <small className="text-warning">{regError}</small>}
         <Form onSubmit={handleRegister}>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Your Name</Form.Label>
