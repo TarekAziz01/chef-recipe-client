@@ -17,7 +17,6 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const { googleSignin, githubSignin, signIn, user } = useContext(AuthContext);
-  console.log(user)
   
   const handleTost = () => {
     toast("Login Success😎😎");
