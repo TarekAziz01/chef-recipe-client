@@ -3,8 +3,8 @@ import React from 'react';
 import Chef from '../Chef/Chef';
 import Banner from '../Banner/Banner';
 import { Container } from 'react-bootstrap';
-import AboutUs from '../../component/AboutUs/AboutUs';
 import FeatureSection from '../FeatureSection/FeatureSection';
+import AboutUs from '../AboutUs/AboutUs';
 
 
 const Home = () => {

@@ -4,13 +4,16 @@
 import React from 'react';
 import { Button, Card, Col, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import LazyLoad from "react-lazy-load";
 
 const ChefCard = (props) => {
     const { name, id, likes, description, experience, photo, numRecipes, recipes } = props.chef;
     return (
       <Col md={6} lg={4}>
         <Card style={{ width: "" }} className="m-2">
-          <Card.Img variant="top" src={photo} />
+          <LazyLoad height={262}>
+            <img className="img-fluid" src={photo}></img>
+          </LazyLoad>
           <Card.Body>
             <Card.Title>{name}</Card.Title>
             <Card.Text>{description}</Card.Text>

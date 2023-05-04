@@ -3,6 +3,7 @@
 import React from 'react';
 import bannerFood from '../../../public/photos/bannerFood.jpg';
 import { Row } from 'react-bootstrap';
+import LazyLoad from "react-lazy-load";
 
 const Banner = () => {
     return (
@@ -16,7 +17,10 @@ const Banner = () => {
             </h6>
           </div>
         </div>
-        <img src={bannerFood} alt="" />
+        
+        <LazyLoad height={''}>
+            <img className="img-fluid" src={bannerFood} alt="" />
+          </LazyLoad>
       </Row>
     );
 };

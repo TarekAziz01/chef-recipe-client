@@ -46,12 +46,3 @@ const AboutUs = () => {
 
 export default AboutUs;
 
-
-
-// const AboutUs = () => {
-//   return (
-   
-//   );
-// };
-
-// export default AboutUs;

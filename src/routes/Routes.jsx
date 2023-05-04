@@ -8,7 +8,7 @@ import Favorite from "../pages/Favorite/Favorite";
 import Blog from "../pages/Blog/Blog";
 import ChefDetail from "../pages/ChefDetail/ChefDetail";
 import PrivateRoute from "./PrivateRoute";
-import NotFound from "../component/NotFound/NotFound";
+import NotFound from "../pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <NotFound></NotFound>,
+        element: <NotFound></NotFound>
       },
     ],
   },
