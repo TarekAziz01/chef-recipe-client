@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { Row, Spinner } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import ChefCard from "../../component/ChefCard/ChefCard";
 
 const Chef = () => {
@@ -32,11 +32,14 @@ const Chef = () => {
 
   return (
     <div>
-      <h2 className="d-flex justify-content-center my-5">Best Chef in house</h2>
-      <Row xs={1} md={2} lg={3} className="g-4">
+      <h2 className="d-flex justify-content-center mt-5 mb-3">Best Chef in house</h2>
+      <Row className="g-4">
+        {/* xs={1} md={2} lg={3} */}
+        
         {chefs.map((chef) => (
           <ChefCard key={chef.id} chef={chef}></ChefCard>
         ))}
+        
       </Row>
     </div>
   );
