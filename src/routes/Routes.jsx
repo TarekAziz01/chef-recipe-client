@@ -28,10 +28,6 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/register",
-        element: <Register></Register>,
-      },
-      {
         path: "/favorite",
         element: <Favorite></Favorite>,
       },
@@ -47,12 +43,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/chef/${params.id}`),
+          fetch(
+            `https://chef-recipe-hunter-server-tarekaziz01.vercel.app/chef/${params.id}`
+          ),
       },
       {
         path: "*",
-        element: <NotFound></NotFound>
-      }
+        element: <NotFound></NotFound>,
+      },
     ],
   },
 ]);
