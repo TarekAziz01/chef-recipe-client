@@ -1,9 +1,12 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 
 
@@ -22,17 +25,23 @@ const Recipecard = (props) => {
           </Card.Header>
           <Card.Body>
             <div className="d-flex">
-              <Card.Img src={photo} alt="Card image" />
-              <div className="list-group-flush"></div>
+              <Card.Img
+                style={{ height: "286px" }}
+                src={photo}
+                alt="Card image"
+              />
             </div>
-            <Card.Text>{rating}</Card.Text>
-            <div className='mb-4'>
-              <Card.Text>Ingredients</Card.Text>
+            <div className='d-flex align-items-center gap-2'>
+              <Card.Text className="mt-3">{rating}</Card.Text>
+              <Rating style={{ maxWidth: 130 }} value={rating} readOnly />
+            </div>
+            <div className="mb-3">
+              <h5>Ingredients</h5>
               {ingredients.map((ingre) => (
                 <ListGroup.Item key={ingre}>{ingre}</ListGroup.Item>
               ))}
             </div>
-            <Card.Text class="border-bottom">Process Method</Card.Text>
+            <h5 className="border-bottom">Process Method</h5>
             <Card.Text>{method}</Card.Text>
             <Card.Text>
               Some quick example text to build on the card title and make up the

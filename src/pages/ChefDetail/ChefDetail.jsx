@@ -14,7 +14,7 @@ const ChefDetail = () => {
     <div className="mt-5">
       <h2 className="text-center mb-5">Chef Recipes</h2>
       <div className="d-flex gap-5 mb-4">
-        <img src={photo} alt="" />
+        <img  src={photo} alt="" />
         <div>
           <h4 className="d-flex justify-content-center mb-5">{name}</h4>
           <p className="d-flex justify-content-center ">{description}</p>
