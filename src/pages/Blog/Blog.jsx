@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Pdf from "react-to-pdf";
 const ref = React.createRef();
 
@@ -9,7 +10,16 @@ const Blog = () => {
       <div>
         <div>
           <Pdf targetRef={ref} filename="div-blue.pdf">
-            {({ toPdf }) => <button onClick={toPdf}>Generate pdf</button>}
+            {({ toPdf }) => (
+              <div onClick={toPdf}>
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip>Generate a pdf of this page</Tooltip>}
+                >
+                  <Button>Generate pdf</Button>
+                </OverlayTrigger>
+              </div>
+            )}
           </Pdf>
         </div>
         <div ref={ref}>
