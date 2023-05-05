@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import ErrorPhoto from '../../../public/photos/error.png'
+import ErrorPhoto from '../../photos/error.png'
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {

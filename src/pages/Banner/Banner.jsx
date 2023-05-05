@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import bannerFood from '../../../public/photos/bannerFood.jpg';
+import bannerFood from '../../photos/bannerFood.jpg';
 import { Row } from 'react-bootstrap';
 import LazyLoad from "react-lazy-load";
 

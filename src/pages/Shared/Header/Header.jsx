@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 import { FaUserCircle } from "react-icons/fa";
@@ -45,12 +45,17 @@ const Header = () => {
           <Nav className="gap-3">
             {/* {user && <span>{user?.displayName}</span>} */}
             {user && (
-              <img
-                title={user?.displayName}
-                className="rounded-circle"
-                style={{ width: "2rem" }}
-                src={user?.photoURL}
-              />
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>{user?.displayName}</Tooltip>}
+              >
+                <img
+                  title={user?.displayName}
+                  className="rounded-circle"
+                  style={{ width: "2rem" }}
+                  src={user?.photoURL}
+                />
+              </OverlayTrigger>
             )}
 
             {user ? (
