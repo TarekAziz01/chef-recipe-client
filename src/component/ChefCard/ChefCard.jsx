@@ -13,6 +13,7 @@ const ChefCard = (props) => {
         <Card style={{ width: "" }} className="m-2">
           <LazyLoad height={""}>
             <Card.Img
+              style={{ height: "286px" }}
               className="img-fluid object-fit-cover"
               variant="top"
               src={photo}
