@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaBeer, FaGithub, FaGoogle } from "react-icons/fa";
 
 
 const Login = () => {
@@ -74,7 +75,7 @@ const Login = () => {
       <div className="w-25 mx-auto mt-5 d-grid gap-2">
         <h5 className="mb-4">Please Login</h5>
         {errorLogin && <small className="text-warning">{errorLogin}</small>}
-        <Form onSubmit={handleLogin}>
+        <Form onSubmit={handleLogin} >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -116,17 +117,16 @@ const Login = () => {
         <div className="d-grid gap-2">
           <button
             onClick={handleGoogleSignin}
-            type="button"
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-primary"
           >
-            Continue with Google
+            <FaGoogle /> Continue with Google
           </button>
+
           <button
             onClick={handleGithubSignin}
-            type="button"
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-primary"
           >
-            Continue with Github
+            <FaGithub /> Continue with Github
           </button>
         </div>
         <ToastContainer

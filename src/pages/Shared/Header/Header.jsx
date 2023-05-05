@@ -41,16 +41,21 @@ const Header = () => {
             >
               Favorite Recipe
             </Link>
+            <Link
+              to="/contact"
+              className="text-black text-decoration-none me-3"
+            >
+              Contact
+            </Link>
           </Nav>
           <Nav className="gap-3">
             {/* {user && <span>{user?.displayName}</span>} */}
             {user && (
               <OverlayTrigger
-                placement="top"
+                placement="bottom"
                 overlay={<Tooltip>{user?.displayName}</Tooltip>}
               >
                 <img
-                  title={user?.displayName}
                   className="rounded-circle"
                   style={{ width: "2rem" }}
                   src={user?.photoURL}
