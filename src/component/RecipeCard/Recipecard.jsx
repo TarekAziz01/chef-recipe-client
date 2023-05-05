@@ -19,7 +19,11 @@ const Recipecard = (props) => {
 
     return (
       <div className="d-flex align-items-stretch">
-        <Card border="primary" style={{ width: "", height: "" }}>
+        <Card
+          className="position-relative"
+          border="primary"
+          style={{ width: "", height: "" }}
+        >
           <Card.Header>
             <Card.Title>{name}</Card.Title>
           </Card.Header>
@@ -31,7 +35,7 @@ const Recipecard = (props) => {
                 alt="Card image"
               />
             </div>
-            <div className='d-flex align-items-center gap-2'>
+            <div className="d-flex align-items-center gap-2">
               <Card.Text className="mt-3">{rating}</Card.Text>
               <Rating style={{ maxWidth: 130 }} value={rating} readOnly />
             </div>
@@ -41,16 +45,14 @@ const Recipecard = (props) => {
                 <ListGroup.Item key={ingre}>{ingre}</ListGroup.Item>
               ))}
             </div>
-            <h5 className="border-bottom">Process Method</h5>
-            <Card.Text>{method}</Card.Text>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card is content.
-            </Card.Text>
+            <div className='mb-5'>
+              <h5 className="border-bottom">Process Method</h5>
+              <Card.Text>{method}</Card.Text>
+            </div>
             <div className="mt-auto ">
               <Button
                 onClick={handleTost}
-                className="d-flex align-items-end"
+                className="d-flex align-items-end position-absolute bottom-0 py-2"
                 variant="outline-primary"
                 size="lg"
               >
